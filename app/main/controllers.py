@@ -1,0 +1,27 @@
+from flask import Blueprint
+from flask_restful import Resource, Api
+
+
+main = Blueprint('main', __name__)
+api = Api(main)
+
+class MainAPI(Resource):
+    def get(self):
+        return {'main': 'hello'}
+
+api.add_resource(MainAPI, '/')
+
+
+"""
+from flask import Flask
+from flask_restful import Resource, Api
+
+app = Flask(__name__)
+api = Api(app)
+
+class HelloWorld(Resource):
+    def get(self):
+        return {'hello': 'world'}
+
+api.add_resource(HelloWorld, '/')
+"""

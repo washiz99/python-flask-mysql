@@ -1,11 +1,9 @@
 from flask import Flask
-from flask_restful import Resource, Api
+from app.main.controllers import main
+from app.sub01.controllers import sub01
+
 
 app = Flask(__name__)
-api = Api(app)
 
-class HelloWorld(Resource):
-    def get(self):
-        return {'hello': 'world'}
-
-api.add_resource(HelloWorld, '/')
+app.register_blueprint(main, url_prefix='/')
+app.register_blueprint(sub01, url_prefix='/sub01')
