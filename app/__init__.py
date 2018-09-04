@@ -1,9 +1,7 @@
 from flask import Flask
-from app.main.controllers import main
-from app.sub01.controllers import sub01
+from app.api import api_blueprint
 
 
 app = Flask(__name__)
 
-app.register_blueprint(main, url_prefix='/')
-app.register_blueprint(sub01, url_prefix='/sub01')
+app.register_blueprint(api_blueprint)
