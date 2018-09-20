@@ -1,7 +1,7 @@
 from app import db
 
 
-class User(Base):
+class User():
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
