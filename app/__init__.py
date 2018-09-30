@@ -1,9 +1,18 @@
 from flask import Flask
-from app.main.controllers import main
-from app.sub01.controllers import sub01
+from flask_sqlalchemy import SQLAlchemy
+from config import config
+
+db = SQLAlchemy()
 
 
-app = Flask(__name__)
+def create_app(config_name):
+    app = Flask(__name__)
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
 
-app.register_blueprint(main, url_prefix='/')
-app.register_blueprint(sub01, url_prefix='/sub01')
+    db.init_app(app)
+
+    from .api import api as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix='/api/v1')
+
+    return app
