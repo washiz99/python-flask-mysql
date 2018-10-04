@@ -4,13 +4,13 @@ from .. import db
 from ..models import User
 
 
-@api.route('/users/<int:id>')
+@api.route('/users/<int:id>', methods=['GET'])
 def get_user(id):
     user = User.query.get_or_404(id)
     return jsonify(user.to_json())
 
 
-@api.route('/users')
+@api.route('/users', methods=['GET'])
 def get_users():
     page = request.args.get('page', 1, type=int)
     pagination = User.query.paginate(
