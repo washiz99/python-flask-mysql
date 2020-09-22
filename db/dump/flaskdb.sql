@@ -1,6 +1,7 @@
-CREATE DATABASE flaskdb;
-use flaskdb;
+CREATE DATABASE IF NOT EXISTS flaskdb;
+USE flaskdb;
 
+DROP TABLE IF EXISTS user;
 CREATE TABLE user (
   id              int unsigned  not null auto_increment,
   username        varchar(100)  not null,
@@ -8,14 +9,3 @@ CREATE TABLE user (
   PRIMARY KEY (id),
   UNIQUE UQ_user_email (email)
 );
-
--- CREATE TABLE user (
---   id              int unsigned  not null auto_increment,
---   name            varchar(100)  not null,
---   email           varchar(128)  not null,
---   password        char(128)     not null,
---   created_at      datetime      not null default current_timestamp,
---   updated_at      datetime      not null default current_timestamp on update current_timestamp,
---   PRIMARY KEY (id),
---   UNIQUE UQ_user_email (email)
--- );
