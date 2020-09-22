@@ -1,7 +1,7 @@
 from flask import jsonify, request, url_for, current_app
 from . import api
 from .. import db
-from ..models import User
+from .models import User
 
 
 @api.route('/users/<int:id>', methods=['GET'])
