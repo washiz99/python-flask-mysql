@@ -3,6 +3,7 @@ version: '3'
 services:
   app:
     build: ./flask-api
+    image: flask-api
     container_name: flask-api
     environment:
       - FLASK_CONFIG=production
